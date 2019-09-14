@@ -8,6 +8,8 @@ var vertexShaderText =
         'uniform mat4 mWorld;',
         'uniform mat4 mView;',
         'uniform mat4 mProj;',
+        'uniform mat4 mProj;',
+        'uniform mat4 mProj;',
         '',
         'void main()',
         '{',
@@ -290,11 +292,11 @@ var InitDemo = function () {
         mat4.rotateX(xRotationMatrix, identityMatrix, xAngle);
         mat4.rotateZ(zRotationMatrix, identityMatrix, zAngle);
 
-        mat4.multiply(worldMatrix, yRotationMatrix, xRotationMatrix);
-        mat4.multiply(worldMatrix, worldMatrix, zRotationMatrix)
-        mat4.translate(worldMatrix, worldMatrix, translateVector);
+        mat4.multiply(viewMatrix, yRotationMatrix, xRotationMatrix);
+        mat4.multiply(viewMatrix, viewMatrix, zRotationMatrix)
+        mat4.translate(viewMatrix, viewMatrix, translateVector);
 
-        gl.uniformMatrix4fv(matWorldUniformLocation, gl.FALSE, worldMatrix);
+        gl.uniformMatrix4fv(matViewUniformLocation, gl.FALSE, viewMatrix);
 
         gl.clearColor(0.75, 0.85, 0.8, 1.0);
         gl.clear(gl.DEPTH_BUFFER_BIT | gl.COLOR_BUFFER_BIT);
