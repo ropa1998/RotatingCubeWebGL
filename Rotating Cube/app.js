@@ -291,7 +291,7 @@ var InitDemo = function () {
         mat4.rotateZ(zRotationMatrix, identityMatrix, zAngle);
 
         mat4.multiply(worldMatrix, yRotationMatrix, xRotationMatrix);
-        mat4.multiply(worldMatrix, worldMatrix, zRotationMatrix)
+        mat4.multiply(worldMatrix, worldMatrix, zRotationMatrix);
         mat4.translate(worldMatrix, worldMatrix, translateVector);
 
         gl.uniformMatrix4fv(matWorldUniformLocation, gl.FALSE, worldMatrix);
